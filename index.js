@@ -3,7 +3,7 @@ const moment = require('moment')
 const axios = require('axios')
 const app = express();
 
-const port = 8082 || process.env.port;
+const port = process.env.PORT || 8082;
 
 require("dotenv").config()
 
