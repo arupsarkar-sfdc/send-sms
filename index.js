@@ -14,12 +14,14 @@ app.get('/', async (req, res) => {
     try{
 
         const currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a')
-                
+        // get query parameters from req object
+        const { phone } = req.query
+        console.log(`phone: ${phone}`)
         client.messages
             .create({
                 body: `${currentDateTime} - Good news !!! This week we are having 15% discount`,
                 from: process.env.TWILIO_PHONE_NUMBER,
-                to: '+16462697876'
+                to: phone
             })
             .then((message) => {
                 console.log(JSON.stringify(message))
